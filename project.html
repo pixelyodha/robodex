@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects - ROBODEX</title>
+  <link rel="stylesheet" href="project.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="bg.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <ul>
+      <a href="index.html" class="linki"><li>Home</li></a>
+      <a href="members.html" class="linki"><li>Members</li></a>
+      <a href="project.html" class="linki"><li>Projects</li></a>
+      <a href="event.html" class="linki"><li>Events</li></a>
+      <a href="gallery.html" class="linki"><li>Gallery</li></a>
+    </ul>
+  </nav>
+
+  <!-- Events Section -->
+  <main class="members-section" role="main">
+    <div class="overlay">
+      <div class="center-content">
+        <h1 class="text">Projects</h1>
+      </div>
+      <div class="members-grid" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <!-- Firebase and Events Script -->
+  <script type="module" src="project.js"></script>
+  <script>
+    // Animation for cards
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = `${entry.target.dataset.index * 0.1}s`;
+          entry.target.style.opacity = '1';
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelector('.members-grid').addEventListener('DOMNodeInserted', (e) => {
+      if (e.target.classList.contains('member-card')) {
+        observer.observe(e.target);
+      }
+    });
+  </script>
+</body>
+</html>

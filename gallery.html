@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - ROBODEX</title>
+  <link rel="stylesheet" href="gallery.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="bg.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <ul>
+      <a href="index.html" class="linki"><li>Home</li></a>
+      <a href="members.html" class="linki"><li>Members</li></a>
+      <a href="project.html" class="linki"><li>Projects</li></a>
+      <a href="event.html" class="linki"><li>Events</li></a>
+      <a href="gallery.html" class="linki"><li>Gallery</li></a>
+    </ul>
+  </nav>
+
+  <!-- Gallery Section -->
+  <main class="gallery-section" role="main">
+    <div class="overlay">
+      <div class="center-content">
+        <h1 class="text">Gallery</h1>
+      </div>
+      
+      <!-- Filter Options -->
+      <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="competitions">Competitions</button>
+        <button class="filter-btn" data-filter="workshops">Workshops</button>
+        <button class="filter-btn" data-filter="projects">Projects</button>
+      </div>
+      
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" aria-live="polite"></div>
+      
+      <!-- Lightbox -->
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-content">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-img" src="" alt="Gallery image full view">
+    <div id="lightbox-video" class="lightbox-video"></div>
+    <div class="lightbox-caption"></div>
+    <button class="nav-btn prev-btn">&#10094;</button>
+    <button class="nav-btn next-btn">&#10095;</button>
+  </div>
+</div>
+    </div>
+  </main>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 5L5 12H9V19H15V12H19L12 5Z" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <!-- Firebase and Gallery Script -->
+  <script type="module" src="gallery.js"></script>
+  <script>
+    // Animation for gallery items
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = `${entry.target.dataset.index * 0.05}s`;
+          entry.target.style.opacity = '1';
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelector('.gallery-grid').addEventListener('DOMNodeInserted', (e) => {
+      if (e.target.classList.contains('gallery-item')) {
+        observer.observe(e.target);
+      }
+    });
+    
+    // Back to top button
+    const backToTopBtn = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>

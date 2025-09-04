@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="ROBODEX - The Robotics Club of Delhi Public School Dwarka, New Delhi." />
+  <meta name="keywords" content="robotics, club, DPS Dwarka, ROBODEX" />
+  <meta property="og:title" content="ROBODEX - DPS Dwarka Robotics Club" />
+  <meta property="og:description" content="Join the exciting robotics community at DPS Dwarka." />
+  <meta property="og:type" content="website" />
+  <title>ROBODEX - DPS Dwarka Robotics Club</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <video autoplay muted loop>
+      <source src="assets/load.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content" class="hidden">
+    <!-- Background Video -->
+    <video autoplay muted loop id="bg-video">
+      <source src="assets/bg.mp4" type="video/mp4">
+    </video>
+
+    <!-- Overlay Content -->
+    <div class="overlay">
+      <img src="assets/grp.png" alt="Group Background" class="group-bg">
+
+      <!-- Navbar -->
+      <nav class="navbar">
+        <ul>
+          <a href="index.html" class="linki"><li>Home</li></a>
+      <a href="members.html" class="linki"><li>Members</li></a>
+      <a href="project.html" class="linki"><li>Projects</li></a>
+      <a href="event.html" class="linki"><li>Events</li></a>
+      <a href="gallery.html" class="linki"><li>Gallery</li></a>
+        </ul>
+      </nav>
+
+      <!-- Centered Logo & Text -->
+      <div class="center-content">
+        <img src="assets/g.png" alt="Logo" class="logo" />
+        <h4 class="text">
+          Founded in 2009, ROBODEX is the Robotics Club of Delhi Public School Dwarka. What began with just 5 members as an intra-house activity grew into an inter-school event by 2010.
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
