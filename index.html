@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="assets/g.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robodex — Delhi Public School Robotics Club">
+    <title>Robodex — Delhi Public School Robotics Club</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ════════════════════════════════════════════════════════
+         LOADING SCREEN
+         ────────────────────────────────────────────────────────
+         Full-screen video intro.
+         ► Replace  assets/intro.mp4  with your actual video.
+         ► The JS in script.js listens for the 'ended' event and
+           fades this overlay out, revealing the site below.
+         ► A spinner fallback shows if the browser can't play video.
+         ════════════════════════════════════════════════════════ -->
+     <div id="loading-screen" aria-hidden="true">
+
+        <video
+            id="intro-video"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+        >
+            <!-- ▼ REPLACE THIS PATH with your intro video ▼ -->
+            <source src="assets/load.webm" type="video/webm">
+        </video>
+
+        <!-- Fallback: shown if video fails / browser blocks autoplay -->
+        <div id="loading-fallback">
+            <div class="loader-ring"></div>
+            <span class="loader-label">ROBODEX</span>
+        </div>
+        <div id="loading-bar-track" aria-hidden="true">
+            <div id="loading-bar-fill"></div>
+        </div>
+
+    </div>
+
+    <div id="site-wrapper" class="site-hidden" aria-hidden="true">
+
+        <div id="bg-grid" aria-hidden="true"></div>
+
+        <header id="navbar" role="banner">
+
+            <!-- Logo ── left side -->
+            <a href="index.html" class="nav-logo" aria-label="Robodex Home">
+                <img
+                    src="assets/logo.webp"
+                    alt=""
+                    class="logo-img"
+                    aria-hidden="true"
+                    onerror="this.style.display='none'"
+                >
+            </a>
+            <button
+                id="hamburger-btn"
+                class="hamburger"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="nav-overlay"
+            >
+                <span class="ham-line ham-top"    aria-hidden="true"></span>
+                <span class="ham-line ham-mid"    aria-hidden="true"></span>
+                <span class="ham-line ham-bot"    aria-hidden="true"></span>
+            </button>
+
+        </header>
+        <nav
+            id="nav-overlay"
+            role="navigation"
+            aria-label="Site navigation"
+            aria-hidden="true"
+        >
+            <div class="nav-inner">
+
+                <button
+                    id="nav-close-btn"
+                    class="nav-close"
+                    type="button"
+                    aria-label="Close navigation menu"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+                <!-- Page links -->
+                <ul class="nav-links" role="list">
+                    <li role="listitem">
+                        <a href="index.html"    class="nav-link is-active" data-index="01">Home</a>
+                    </li>
+                    <li role="listitem">
+                        <a href="projects.html" class="nav-link"           data-index="02">Projects</a>
+                    </li>
+                    <li role="listitem">
+                        <a href="events.html"   class="nav-link"           data-index="03">Events</a>
+                    </li>
+                    <li role="listitem">
+                        <a href="alumni.html"   class="nav-link"           data-index="04">Alumni</a>
+                    </li>
+                    <li role="listitem">
+                        <a href="members.html"  class="nav-link"           data-index="05">Members</a>
+                    </li>
+                </ul>
+
+                <!-- Decorative footer text inside the nav overlay -->
+                <p class="nav-footer-tag" aria-hidden="true">Delhi Public School &mdash; Robotics Club</p>
+
+            </div><!-- /.nav-inner -->
+        </nav><!-- /#nav-overlay -->
+
+        <!-- Semi-transparent backdrop — click to close nav -->
+        <div id="nav-backdrop" aria-hidden="true"></div>
+
+
+        <!--  MAIN CONTENT -->
+        <main id="main-content" role="main">
+
+
+            <!-- HERO SECTION  (full viewport) -->
+            <section id="hero" class="hero-section" aria-label="Hero">
+                <div class="hero-img-wrap" aria-hidden="true">
+                    <img
+                        src="assets/logo.webp"
+                        alt="Robodex mascot robot"
+                        class="hero-img"
+                        onerror="this.style.opacity='0'"
+                    >
+                </div>
+                <div class="hero-text-block">
+                    <span class="hero-eyebrow">Delhi public school &bull; Dwarka</span>
+                    <h1 class="hero-title">ROBODEX</h1>
+                    <a href="projects.html" class="hero-cta" aria-label="Explore Robodex Projects">
+                        <span>Explore Projects</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+
+        <!-- FOOTER -->
+        <footer id="site-footer" role="contentinfo">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="footer-logo-text">ROBODEX</span>
+                    <span class="footer-tagline">Delhi Public School &mdash; Robotics Club</span>
+                </div>
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <a href="index.html">Home</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="events.html">Events</a>
+                    <a href="alumni.html">Alumni</a>
+                    <a href="members.html">Members</a>
+                </nav>
+                <p class="footer-copy">&copy; <span id="footer-year"></span> Robodex. All rights reserved.</p>
+
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>
